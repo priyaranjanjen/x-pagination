@@ -14,11 +14,17 @@ export default function PaginationData(){
 
     const fetchData = async() => {
 
-        const response = await fetch("https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json")
-        const finalData = await response.json();
+        try {
+            const response = await fetch("https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json");
+            const finalData = await response.json();
 
-        console.log(finalData);
-        setTableData(finalData);
+            console.log(finalData);
+            setTableData(finalData);
+        } catch (error) {
+            alert("failed to fetch data");
+        }
+
+        
     }
 
     useEffect(() => {
